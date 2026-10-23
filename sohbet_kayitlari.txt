@@ -1,0 +1,5 @@
+Server: Beşiktaş sampiyon olabilir mi?
+Server: Beşiktaş perşembe günü Crystal Palace'ı yener mi?
+Client: Yener geçer bile
+Server: O zaman kutlamaya başlayalım
+Client: evet başlayalım
