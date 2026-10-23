@@ -15,11 +15,17 @@ No external packages need to be installed. Everything runs on standard Python li
 
  3. Files and Modules
 -`frontend.py`: Graphical user interface to run the tools with buttons.
+
 -`main.py`: Terminal menu to select and run the modules from the console.
+
 -`makine_bilgisi.py`: Finds and prints the computer's hostname and IP address.
+
 - `echo_test.py`: Starts a TCP server on port 1903, takes data from the client, and sends the exact same data back to test the connection.
+- 
 -`sntp_module.py`: Connects to pool.ntp.org on UDP port 123, gets the current time using a 48-byte packet, and compares it with the local system time.
+
 -`sohbet_modulu.py`: Simple TCP chat tool. It can be started as a server or a client. Messages are shown on the screen and saved into `sohbet_kayitlari.txt`.
+
 - `hata_yonetimi.py`: Changes socket buffer sizes, sets a 2-second timeout, enables non-blocking mode, and catches connection errors.
 
 4. How to Run
