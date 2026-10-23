@@ -8,14 +8,14 @@ def sntp_zaman_kontrol():
     
     
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # SNTP'de UDP protokolü kullanıldığı için UDP soketi oluşturuyoruz.
-    client.settimeout(1.903) # Sunucudan yanıt gelmezse 1.903 saniye bekleyip zaman aşımına düşmesini sağlıyoruz.
-    
+    client.settimeout(5) # Sunucudan yanıt gelmezse 5 saniye bekleyip zaman aşımına düşmesini sağlıyoruz.
+    ### Başta 1.903 saniye olarak ayarladım ancak bazı durumlarda sunucudan yanıt gelmeyebilir. Bu yüzden 5 saniye olarak değiştirdim.
     
     data = b'\x1b' + 47 * b'\0' # Sunucudan saati istemek için 48 baytlık standart SNTP paketini hazırlıyoruz.
     
     try:
         print(f"\n[SNTP Modülü] {NTP_SERVER} adresine zaman isteği yollanıyor...")
-        client.sendto(data, (NTP_SERVER, 1903)) # Hazırladığımız paketi belirlediğimiz port üzerinden sunucuya yolluyoruz.
+        client.sendto(data, (NTP_SERVER, 123)) # Hazırladığımız paketi belirlediğimiz port üzerinden sunucuya yolluyoruz.
         
         data, address = client.recvfrom(1024) # Sunucudan gelen yanıtı 1024 byte olarak alıyoruz.
         if data: # Eğer sunucudan veri geldiyse işlemlere başlıyoruz.
@@ -26,7 +26,7 @@ def sntp_zaman_kontrol():
             print("Sistem Zamanı:", time.ctime()) # Bilgisayarımızın kendi saatini ekrana yazdırıyoruz.
             print("SNTP Sunucu Zamanı:", time.ctime(gercek_zaman)) # Sunucudan aldığımız gerçek saati okunabilir formata çevirip yazdırıyoruz.
             
-    except socket.timeout: # 1.903 saniye içinde yanıt gelmezse zaman aşımı hatasını yakalıyoruz.
+    except socket.timeout: # 5 saniye içinde yanıt gelmezse zaman aşımı hatasını yakalıyoruz.
         print("Hata: SNTP sunucusuna bağlanırken zaman aşımı oluştu.")
     except socket.error as e: # Bağlantıda veya sokette başka bir sorun çıkarsa hatayı burada yakalıyoruz.
         print(f"Soket hatası oluştu: {e}")
