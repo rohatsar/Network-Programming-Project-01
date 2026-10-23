@@ -7,15 +7,18 @@ Name & Surname: Rohat Sarıgül
 Student ID: 2022556051
 
  1. Project Overview
+    
 This project is a network diagnostic tool developed to practice basic socket programming, time synchronization, and error handling. All modules are written in separate files and connected to both a terminal menu and a graphical interface.
 
- 2. Requirements
+ 3. Requirements
+    
 - Python 3
 - Libraries: socket, struct, time, sys, tkinter
 
 No external packages need to be installed. Everything runs on standard Python libraries.
 
  3. Files and Modules
+    
 -`frontend.py`: Graphical user interface to run the tools with buttons.
 
 -`main.py`: Terminal menu to select and run the modules from the console.
@@ -31,6 +34,7 @@ No external packages need to be installed. Everything runs on standard Python li
 -`hata_yonetimi.py`: Changes socket buffer sizes, sets a 2-second timeout, enables non-blocking mode, and catches connection errors.
 
 4. How to Run
+   
 Open a terminal in the project folder.
 
 To start the graphical interface:
